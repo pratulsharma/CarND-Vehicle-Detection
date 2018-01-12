@@ -39,7 +39,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 ![alt text][image1]
 
 - I then explored different color spaces and different `skimage.hog()`
-- parameters use 
+- parameters used 
     - `orientations` = 9
     - `pixels_per_cell`= (8,8)
     - `cells_per_block` = (2.2)
@@ -50,29 +50,31 @@ I grabbed random images from each of the two classes and displayed them to get a
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I used following HOG parameters
+To find which color space to apply HOG, I use `get_hog_features()` function to return an image equivalent to extracted features, and visualized how recognizable the output image is? I experimented with different hog parameters and finally decided the parameters (in previous comment) that gave high test accuracy for the SVM classifier.
 
-- orient: 32, because my laptop can't handle large feature vectors, also see Discussion
-- pixels_per_cell: 16, testing shows 16 better than 8
-- cells_per_block: 2
-
-To find which color space to apply HOG, I use `get_hog_features()` function to return an image equivalent to extracted features, and eyeball how recognizable the image is.
+Test Accuracy of HOG based SVC is 97.38% and the test Accuracy of Color Histogram based SVC is 96.68%.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+- I trained a linear SVM using `svm.SVC()` function. 
+- The images were converted from RGD to YCrCb color space.
+- The feature vector included hog, color and color histogram features. 
 
 ### Sliding Window Search
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+- The code for this step can be found under Final Pipeline cell.
+- The search window was restriced between 370 to 600 along the y-axis. 
+- The window size and overlap where the same as those used in the class notes.
 
 ![alt text][image3]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+- Several iteration were performed to get the parameters like hog, spatial and histogram color features right for the classifier. 
+- To reduce false positives, threshold was applied. 
+- Following images show the bounding boxes and heast maps of detected cars.
 
 ![alt text][image4]
 ---
@@ -88,17 +90,6 @@ Here's a [link to my video result](./project_video.mp4)
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
-
-### Here are six frames and their corresponding heatmaps:
-
-![alt text][image5]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
 
 
 ---
