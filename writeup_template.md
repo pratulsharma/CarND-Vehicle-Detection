@@ -38,13 +38,12 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 ![alt text][image1]
 
-- I explored different color spaces and different `skimage.hog()` function
-- parameters used 
+- I used `skimage.hog()` library with following parameters
     - `orientations` = 9
     - `pixels_per_cell`= (8,8)
     - `cells_per_block` = (2.2)
 
-I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
+I use random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
 ![alt text][image2]
 
