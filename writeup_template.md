@@ -87,8 +87,8 @@ Here's a [link to my video result](./project_video_output.mp4)
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
-- To improve false detection threshold was applied on integrated heatmap.
-- To improve vehicle detection a deque with bounding boxes for 27 frames was applied.
+- To improve false detection, threshold was applied on the integrated heatmap.
+- To improve vehicle detection, a deque with bounding boxes for last 27 frames was applied.
 
 ---
 
@@ -96,7 +96,7 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-- The pipeline still detects some false positives. I could possibly use add region masking to ignore the vehicles coming on the opposite lanes.
+- The pipeline still detects some false positives. I could possibly add region masking to ignore the vehicles coming on the opposite lanes.
 - When the two cars are close, the window momentorily moves only to one car. This could possibly be improved by more granular heatmap detection (two, instead of one) which would enable detection of two cars instead on one. 
 - Playing with the size of window might help too.
 
