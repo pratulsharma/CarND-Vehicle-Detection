@@ -38,7 +38,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 ![alt text][image1]
 
-- I then explored different color spaces and different `skimage.hog()`
+- I explored different color spaces and different `skimage.hog()` function
 - parameters used 
     - `orientations` = 9
     - `pixels_per_cell`= (8,8)
@@ -50,15 +50,14 @@ I grabbed random images from each of the two classes and displayed them to get a
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-To find which color space to apply HOG, I use `get_hog_features()` function to return an image equivalent to extracted features, and visualized how recognizable the output image is? I experimented with different hog parameters and finally decided the parameters (in previous comment) that gave high test accuracy for the SVM classifier.
-
-Test Accuracy of HOG based SVC is 97.38% and the test Accuracy of Color Histogram based SVC is 96.68%.
+To find which color space to apply HOG, I use `get_hog_features()` function to return an image equivalent to extracted features, and visualized how recognizable the output image is? I experimented with different hog parameters and finally decided the parameters (as in previous comment) that gave high test accuracy for the SVM classifier.
+The code for this is under `Final HOG` cell
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 - I trained a linear SVM using `svm.SVC()` function. 
 - The images were converted from RGD to YCrCb color space.
-- The feature vector included hog, color and color histogram features. 
+- The vectors included hog, color and color histogram features. 
 
 ### Sliding Window Search
 
