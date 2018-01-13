@@ -43,7 +43,7 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
     - `pixels_per_cell`= (8,8)
     - `cells_per_block` = (2.2)
 
-I use random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
+I use random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like. Following image is an example.
 
 ![alt text][image2]
 
