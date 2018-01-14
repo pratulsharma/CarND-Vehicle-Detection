@@ -55,7 +55,6 @@ The code for this is under `Final HOG` cell
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 - I trained a linear SVM using `svm.SVC()` function. 
-- The images were converted from RGD to YCrCb color space.
 - The vectors included hog, color and color histogram features. 
 
 ### Sliding Window Search
